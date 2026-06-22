@@ -13,6 +13,7 @@
             padding: 16px;
             margin: 0;
             user-select: none;
+            box-sizing: border-box;
         }
         .section {
             margin-bottom: 20px;
@@ -24,7 +25,7 @@
             color: var(--tg-theme-text-color, #000);
         }
 
-        /* Кнопки переключения категорий на самом верху (Продажа / Аренда) */
+        /* Кнопки переключения категорий на самом верху */
         .category-tabs {
             display: flex;
             gap: 10px;
@@ -78,21 +79,27 @@
             color: #248bcf;
         }
 
-        /* Блок ввода цен в одну строку */
+        /* Динамический блок ввода цен (теперь железно помещается на экранах смартфонов) */
         .price-range {
             display: flex;
             gap: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
         .price-input {
             flex: 1;
+            width: 100%; /* Заставляет инпуты сжиматься внутри флекса */
+            min-width: 0; /* Убирает дефолтную минимальную ширину браузера */
             padding: 12px;
             border-radius: 10px;
             border: 1px solid transparent;
             background-color: var(--tg-theme-secondary-bg-color, #f4f4f5);
             color: var(--tg-theme-text-color, #000);
             font-size: 16px;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Включает padding в общую ширину */
             outline: none;
+            -webkit-appearance: none; /* Убираем специфичные стили iOS */
+            margin: 0;
         }
         .price-input::placeholder {
             color: #8e8e93;
@@ -199,12 +206,13 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 20px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
 
-    <!-- Самый верхний блок: Выбор Типа Сделки -->
+    <!-- Выбор Типа Сделки -->
     <div class="category-tabs">
         <div class="tab-btn active" data-cat="62" id="tab_sale">Վաճառք (Продажа)</div>
         <div class="tab-btn" data-cat="63" id="tab_rent">Երկարաժամկետ վարձակալություն</div>
@@ -283,7 +291,7 @@
         tg.ready();
         tg.expand();
 
-        let selectedCategory = "62"; // По умолчанию 62 (Продажа)
+        let selectedCategory = "62";
         let selectedCurrency = null;
         let selectedCondition = null;
         let selectedSeller = null;
@@ -397,7 +405,7 @@
             const sellerMap = { "1": "Սեփականատեր (Собственник)", "2": "Գործակալություն (Агентство)" };
 
             const filterData = {
-                category_id: selectedCategory, // "62" или "63"
+                category_id: selectedCategory,
                 category_text: categoryMap[selectedCategory],
                 currency_id: selectedCurrency,
                 currency_text: selectedCurrency ? currencyMap[selectedCurrency] : "Любая валюта",
