@@ -58,6 +58,7 @@
             gap: 10px;
             margin-bottom: 16px;
         }
+
         .currency-btn {
             display: flex;
             align-items: center;
@@ -79,7 +80,7 @@
             color: #248bcf;
         }
 
-        /* Динамический блок ввода цен (теперь железно помещается на экранах смартфонов) */
+        /* Динамический блок ввода цен */
         .price-range {
             display: flex;
             gap: 10px;
@@ -88,17 +89,17 @@
         }
         .price-input {
             flex: 1;
-            width: 100%; /* Заставляет инпуты сжиматься внутри флекса */
-            min-width: 0; /* Убирает дефолтную минимальную ширину браузера */
+            width: 100%;
+            min-width: 0;
             padding: 12px;
             border-radius: 10px;
             border: 1px solid transparent;
             background-color: var(--tg-theme-secondary-bg-color, #f4f4f5);
             color: var(--tg-theme-text-color, #000);
             font-size: 16px;
-            box-sizing: border-box; /* Включает padding в общую ширину */
+            box-sizing: border-box;
             outline: none;
-            -webkit-appearance: none; /* Убираем специфичные стили iOS */
+            -webkit-appearance: none;
             margin: 0;
         }
         .price-input::placeholder {
@@ -212,15 +213,24 @@
 </head>
 <body>
 
-    <!-- Выбор Типа Сделки -->
-    <div class="category-tabs">
-        <div class="tab-btn active" data-cat="62" id="tab_sale">Վաճառք (Продажа)</div>
+    <!-- Выбор Типа Сделки (Главные табы) -->
+    <div class="category-tabs" id="mainCategoryTabs">
+        <div class="tab-btn active" data-cat="62" id="tab_sale">Վաճառք</div>
         <div class="tab-btn" data-cat="63" id="tab_rent">Երկարաժամկետ վարձակալություն</div>
+    </div>
+
+    <!-- Тип публикации (В стиле Снимок экрана 2026-06-29 в 22.14.40.png) -->
+    <div class="section">
+        <div class="section-title">Հրապարակման տեսակ</div>
+        <div class="category-tabs" id="postTypeTabs">
+            <div class="tab-btn active" data-type="all">Բոլորը</div>
+            <div class="tab-btn" data-type="new">Միայն նոր հայտարարություններ</div>
+        </div>
     </div>
 
     <!-- Секция Валюты и Цены -->
     <div class="section">
-        <div class="section-title">Գին (Цена)</div>
+        <div class="section-title">Գին)</div>
 
         <div class="currency-grid">
             <div class="currency-btn" data-value="0">🇦🇲 Դ (AMD)</div>
@@ -237,7 +247,7 @@
 
     <!-- Секция Состояния здания -->
     <div class="section">
-        <div class="section-title">Վիճակ (Состояние)</div>
+        <div class="section-title">Վիճակ</div>
         <div class="pill-flex">
             <div class="pill-btn condition-btn" data-cnd="4">Կառուցված</div>
             <div class="pill-btn condition-btn" data-cnd="5">Անավարտ</div>
@@ -246,16 +256,16 @@
 
     <!-- Секция Продавцов -->
     <div class="section">
-        <div class="section-title">Վաճառողներ (Продавцы)</div>
+        <div class="section-title">Վաճառողներ</div>
         <div class="pill-flex">
             <div class="pill-btn seller-btn" data-user="1">Սեփականատեր</div>
             <div class="pill-btn seller-btn" data-user="2">Գործակալություն</div>
         </div>
     </div>
 
-    <!-- Секция Локаций -->
+    <!-- Секция Локаций (С испрaвленными под List.am values) -->
     <div class="section">
-        <div class="section-title">Տարածաշրջան (Локация)</div>
+        <div class="section-title">Տարածաշրջան</div>
         <div class="tree-container">
 
             <div class="parent-header" id="yerevanHeader">
@@ -267,18 +277,18 @@
             </div>
 
             <div class="child-list" id="yerevanList">
-                <div class="child-item"><input type="checkbox" class="child-box" value="2" data-name="Աջափնյակ"><span>Աջափնյակ</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="3" data-name="Արաբկիր"><span>Արաբկիր</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="4" data-name="Ավան"><span>Ավան</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="5" data-name="Դավթաշեն"><span>Դավթաշեն</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="6" data-name="Էրեբունի"><span>Էրեբունի</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="7" data-name="Քանաքեռ-Զեյթուն"><span>Քանաքեռ-Զեյթուն</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="8" data-name="Կենտրոն"><span>Կենտրոն</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="9" data-name="Մալաթիա-Սեբաստիա"><span>Մալաթիա-Սեբաստիա</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="10" data-name="Նոր Նորք"><span>Նոր Նորք</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="13" data-name="Շենգավիթ"><span>Շենգավիթ</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="11" data-name="Նորք-Մարաշ"><span>Նորք-Մարաշ</span></div>
-                <div class="child-item"><input type="checkbox" class="child-box" value="12" data-name="Նուբարաշեն"><span>Նուբարաշեն</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="11" data-name="Աջափնյակ"><span>Աջափնյակ</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="12" data-name="Արաբկիր"><span>Արաբկիր</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="13" data-name="Ավան"><span>Ավան</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="14" data-name="Դավթաշեն"><span>Դավթաշեն</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="15" data-name="Էրեբունի"><span>Էրեբունի</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="16" data-name="Քանաքեռ-Զեյթուն"><span>Քանաքեռ-Զեյթուն</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="17" data-name="Կենտրոն"><span>Կենտրոն</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="18" data-name="Մալաթիա-Սեբաստիա"><span>Մալաթիա-Սեբաստիա</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="19" data-name="Նոր Նորք"><span>Նոր Նորք</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="20" data-name="Շենգավիթ"><span>Շենգավիթ</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="21" data-name="Նորք-Մարաշ"><span>Նորք-Մարաշ</span></div>
+                <div class="child-item"><input type="checkbox" class="child-box" value="22" data-name="Նուբարաշեն"><span>Նուբարաշեն</span></div>
             </div>
 
         </div>
@@ -295,12 +305,23 @@
         let selectedCurrency = null;
         let selectedCondition = null;
         let selectedSeller = null;
+        let selectedPostType = "all";
 
-        // Переключение Главных Категорий (Продажа / Аренда)
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        tabButtons.forEach(btn => {
+        // Изолированный переключатель публикации (Все / Только новые)
+        const postTabs = document.querySelectorAll('#postTypeTabs .tab-btn');
+        postTabs.forEach(btn => {
             btn.addEventListener('click', () => {
-                tabButtons.forEach(b => b.classList.remove('active'));
+                postTabs.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedPostType = btn.getAttribute('data-type');
+            });
+        });
+
+        // Изолированный переключатель главных категорий (Продажа / Аренда)
+        const mainCategoryTabs = document.querySelectorAll('#mainCategoryTabs .tab-btn');
+        mainCategoryTabs.forEach(btn => {
+            btn.addEventListener('click', () => {
+                mainCategoryTabs.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 selectedCategory = btn.getAttribute('data-cat');
             });
@@ -403,6 +424,7 @@
             const currencyMap = { "0": "AMD", "1": "USD", "2": "EUR", "3": "RUB" };
             const conditionMap = { "4": "Կառուցված (Построенное)", "5": "Անավարտ (Недостроенное)" };
             const sellerMap = { "1": "Սեփականատեր (Собственник)", "2": "Գործակալություն (Агентство)" };
+            const postTypeMap = { "all": "Բոլորը (Все публикации)", "new": "Միայն նոր հայտարարություններ (Только новые)" };
 
             const filterData = {
                 category_id: selectedCategory,
@@ -416,7 +438,9 @@
                 user_id: selectedSeller,
                 user_text: selectedSeller ? sellerMap[selectedSeller] : "Все продавцы",
                 regions_ids: selectedIds,
-                regions_names: selectedNames.length > 0 ? selectedNames : ["Не выбраны"]
+                regions_names: selectedNames.length > 0 ? selectedNames : ["Не выбраны"],
+                post_type: selectedPostType,
+                post_type_text: postTypeMap[selectedPostType]
             };
 
             tg.sendData(JSON.stringify(filterData));
