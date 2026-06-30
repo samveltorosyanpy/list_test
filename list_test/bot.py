@@ -12,7 +12,7 @@ from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
 
 # Импортируем наш облегченный парсер из соседнего файла parser.py
-from parser import parse_listam
+from list_test.parsers.parser import parse_listam
 
 # ─────────────────────────── НАСТРОЙКИ ───────────────────────────
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8028071328:AAH3M-4DlI5IchPZZbpYKWUxYIvcrfUcFi8")
