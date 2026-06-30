@@ -111,9 +111,9 @@ def get_menu_keyboard(tg_id: int, lang: str) -> InlineKeyboardMarkup:
     # Переводим словарь в JSON-строку и экранируем для URL
     json_data = json.dumps(current_settings)
     encoded_data = urllib.parse.quote(json_data)
-
     # Формируем финальный URL с хэшем
-    webapp_full_url = f"{WEBAPP_URL}#{encoded_data}"
+    webapp_full_url = f"{WEBAPP_URL}?start_data={encoded_data}"
+    print(webapp_full_url)
 
     sound_btn = InlineKeyboardButton(
         text=t["btn_mute"] if user.notifications_sound else t["btn_unmute"],
